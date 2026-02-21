@@ -44,6 +44,15 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="assets/Marco_Angioni_CV.pdf"
+            target="_blank"
+            // onClick={() => handleNavClick(item.href)}
+            className="font-mono text-sm text-muted-foreground transition-colors hover:text-primary hidden sm:block"
+          >
+            <span className="text-primary/40">./</span>
+            cv
+          </Link>
           <ThemeToggle />
         </div>
       </div>

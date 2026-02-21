@@ -32,16 +32,16 @@
   };
   --keyframes-glow-pulse: {
     0%, 100% { box-shadow: 0 0 5px hsl(160 100% 50% / 0.2); }
-    50% { box-shadow: 0 0 20px hsl(160 100% 50% / 0.4); }
+    50% { box-shadow: 0 0 10px hsl(160 100% 50% / 0.4); }
   };
   /* --keyframes-cursor-pulse: {
-    0% { opacity: 0.01; }
-    100% { opacity: 1; }
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
   }; */
 
   --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
   --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
-  /* --animate-cursor-pulse: glow-pulse 1s ease-in-out infinite; */
+  /* --animate-cursor-pulse: cursor-pulse 1s linear infinite; */
 
   /* RADII */
   --radius-sm: calc(var(--radius) - 4px);

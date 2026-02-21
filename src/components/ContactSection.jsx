@@ -34,7 +34,7 @@ export function ContactSection() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="font-mono text-xs text-muted-foreground">
-                <span className="text-primary/60">const </span>name
+                <span className="text-primary/60">const </span>fullName
               </label>
               <input
                 type="text"
@@ -44,7 +44,7 @@ export function ContactSection() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className="w-full bg-secondary border border-border rounded-md px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-[var(--glow-primary)] transition-all"
-                placeholder='"your name"'
+                placeholder='"your first and last name"'
               />
             </div>
 
@@ -93,7 +93,7 @@ export function ContactSection() {
             <p className="code-comment mb-4">find me elsewhere</p>
             <div className="flex gap-6 font-mono text-sm">
               <a
-                href="https://github.com"
+                href="https://github.com/marcxzz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -101,7 +101,7 @@ export function ContactSection() {
                 github
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/marco-angioni"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -109,12 +109,12 @@ export function ContactSection() {
                 linkedin
               </a>
               <a
-                href="https://twitter.com"
+                href="https://instagram.com/shot_by_marcxzz_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                twitter
+                instagram
               </a>
             </div>
           </div>

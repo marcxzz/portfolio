@@ -1,4 +1,5 @@
 import { PROJECTS } from "@/data/projects";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const statusColors = {
@@ -8,16 +9,14 @@ const statusColors = {
 };
 
 export function ProjectsSection() {
-  const isVisible = true
-
   return (
     <section id="projects" className="relative py-32">
       <div className="container">
         <div className="mb-16 space-y-4">
           <p className="code-comment">featured work</p>
           <h2 className="text-4xl font-bold tracking-tight">
-            <span className="text-primary">{"{"}</span> Projects{" "}
-            <span className="text-primary">{"}"}</span>
+            <span className="text-primary">{"{ "}</span> Projects
+            <span className="text-primary">{" }"}</span>
           </h2>
           <p className="text-muted-foreground font-mono text-sm max-w-lg">
             {/* A curated selection of projects spanning full-stack development,
@@ -31,13 +30,9 @@ export function ProjectsSection() {
             <Link
               key={project.id}
               href={`/project/${project.id}`}
-              className={`group relative block rounded-lg border border-border bg-card p-6 transition-all duration-500 hover:border-primary/30 hover:shadow-[var(--glow-primary)] ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
+              className="group relative block rounded-lg border border-border bg-card p-6 translate-y-0 transition-all duration-500 hover:border-primary/30 hover:shadow-(--glow-primary)"
               style={{
-                transitionDelay: `${index * 100}ms`,
+                // transitionDelay: `${index * 100}ms`,
               }}
             >
               {/* Top bar */}
@@ -75,14 +70,14 @@ export function ProjectsSection() {
                 ))}
                 {project.techStack.length > 5 && (
                   <span className="inline-flex items-center px-2.5 py-1 rounded-sm text-muted-foreground font-mono text-xs">
-                    +{project.techStack.length - 5}
+                    +{project.techStack.length - 5} {/* TODO: change this */}
                   </span>
                 )}
               </div>
 
               {/* Arrow indicator */}
-              <div className="absolute top-6 right-6 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-1 font-mono text-sm opacity-0 group-hover:opacity-100">
-                →
+              <div className="absolute bottom-6 right-6 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-1 font-mono text-sm opacity-0 group-hover:opacity-100">
+                <ArrowRight size={16} />
               </div>
             </Link>
           ))}

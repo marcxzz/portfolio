@@ -2,28 +2,26 @@ const categories = [
   {
     label: "frontend",
     icon: "◈",
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Three.js", "Framer Motion"],
+    items: ["React", "Next.js", "Tailwind CSS", "Bootstrap CSS", "shadcn"],
   },
   {
-    label: "backend",
+    label: "backend & infra",
     icon: "◆",
-    items: ["Node.js", "Python", "Go", "FastAPI", "Express", "GraphQL"],
+    items: ["AWS", "GraphQL", "Vercel"],
   },
   {
     label: "database",
     icon: "◇",
-    items: ["PostgreSQL", "MongoDB", "Redis", "SQLite", "Supabase"],
+    items: ["NeonDB", "PostgreSQL", "SQLite"],
   },
   {
-    label: "devops & tools",
+    label: "tools & other",
     icon: "⬡",
-    items: ["Docker", "Kubernetes", "Git", "CI/CD", "AWS", "Vercel"],
+    items: ["Figma", "Git"],
   },
 ];
 
 export function TechStackSection() {
-  const isVisible = true
-
   return (
     <section id="stack" className="relative py-32 border-t border-border">
       <div className="container">
@@ -41,12 +39,8 @@ export function TechStackSection() {
           {categories.map((cat, catIndex) => (
             <div
               key={cat.label}
-              className={`rounded-lg border border-border bg-card p-6 transition-all duration-500 hover:border-primary/30 hover:shadow-[var(--glow-primary)] ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${catIndex * 100}ms` }}
+              className="rounded-lg border border-border bg-card p-6 translate-y-0 transition-all duration-500 hover:border-primary/30 hover:shadow-(--glow-primary)"
+              // style={{ transitionDelay: `${catIndex * 100}ms` }}
             >
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-primary text-lg">{cat.icon}</span>
