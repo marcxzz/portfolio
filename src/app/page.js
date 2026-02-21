@@ -1,7 +1,19 @@
+import { HeroSection } from "@/components/HeroSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
+import { TechStackSection } from "@/components/TechStackSection";
+import { GitHubSection } from "@/components/GitHubSection";
+import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
+
 export default function Home() {
   return (
-    <main>
-      <div>Hello world!</div>
-    </main>
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+      <ProjectsSection />
+      <TechStackSection />
+      <GitHubSection />
+      <ContactSection />
+      <Footer />
+    </div>
   );
 }
