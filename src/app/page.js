@@ -3,7 +3,6 @@ import { ProjectsSection } from "@/components/ProjectsSection";
 import { TechStackSection } from "@/components/TechStackSection";
 import { GitHubSection } from "@/components/GitHubSection";
 import { ContactSection } from "@/components/ContactSection";
-import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <TechStackSection />
       <GitHubSection />
       <ContactSection />
-      <Footer />
     </div>
   );
 }

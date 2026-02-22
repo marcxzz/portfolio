@@ -18,14 +18,14 @@ export function ThemeToggle() {
     >
       {theme === "dark" ? (
         <div className="flex gap-2 items-center">
-          <Sun size={14} />
-          light
+          set_theme('light')
+          <Sun size={14} className="stroke-primary" />
         </div>
         // "◐ light"
       ) : (
         <div className="flex gap-2 items-center">
-          <Moon size={14} />
-          dark
+          set_theme('dark')
+          <Moon size={14} className="stroke-primary" />
         </div>
         // "◑ dark"
       )}

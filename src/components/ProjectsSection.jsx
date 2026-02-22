@@ -21,7 +21,7 @@ export function ProjectsSection() {
           <p className="text-muted-foreground font-mono text-sm max-w-lg">
             {/* A curated selection of projects spanning full-stack development,
             creative coding, and developer tools. */}
-            A curated selection of projects I like the most
+            A curated selection of projects I like the most.
           </p>
         </div>
 
