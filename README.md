@@ -1,7 +1,7 @@
 # To-Do's
-- create project details page
-- make 404/not found page with terminal-like texts (e.g. "> ERROR 404: page not found |")
 - change projects list
+- edit project details page
+- make 404/not found page with terminal-like texts (e.g. "> ERROR 404: page not found |")
 - customize scrollbar
 - change light theme colors for better contrast
 - more components for reusable and repetitive parts

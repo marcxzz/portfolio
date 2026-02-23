@@ -1,9 +1,8 @@
 'use client'
 
-import { notFound, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { PROJECTS } from "@/data/projects";
-import { TriangleAlert } from "lucide-react";
 import NotFound from "@/app/not-found";
 
 const statusColors = {
