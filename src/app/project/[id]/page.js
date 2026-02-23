@@ -28,25 +28,12 @@ export default function ProjectDetail() {
           href="/"
           className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary transition-colors mb-12"
         >
-          ← cd ..
+          <ArrowLeft size={16} />
+          cd ..
         </Link>
 
         {/* Header */}
         <div className="mb-16 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-xs text-muted-foreground">
-              {project.year}
-            </span>
-            <span
-              className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-mono border ${statusColors[project.status]}`}
-            >
-              {project.status}
-            </span>
-            <span className="font-mono text-xs text-muted-foreground">
-              {project.category}
-            </span>
-          </div>
-
           <h1 className="text-5xl font-bold tracking-tight">{project.title}</h1>
           <p className="font-mono text-accent">{project.subtitle}</p>
         </div>
@@ -114,7 +101,7 @@ export default function ProjectDetail() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-3 rounded-md border border-border bg-card font-mono text-sm text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
                   >
-                    <span className="text-primary">→</span> github
+                    <span className="text-primary">{">"}</span> github
                   </a>
                 )}
                 {project.liveUrl && (
