@@ -16,7 +16,7 @@ export function HeroSection() {
             className="text-5xl md:text-7xl font-bold tracking-tight animate-fade-in-up"
             style={{ animationDelay: "0.1s", opacity: 1 }}
           >
-            <span className="text-foreground">I am </span>
+            <span className="text-foreground">Hi, I'm </span>
             <span className="text-gradient">Marco</span>
             <br />
             <span className="text-gradient">Angioni</span>

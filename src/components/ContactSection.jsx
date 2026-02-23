@@ -1,22 +1,45 @@
 'use client'
 
-import { Check, Github, Instagram, Linkedin } from "lucide-react";
-import { useState } from "react";
+import { Check, Github, Instagram, Linkedin, Loader2, Mail } from "lucide-react"
+import { useState } from "react"
+import emailjs from "@emailjs/browser"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    from_name: "",
+    from_email: "",
     message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+  })
+  
+  const [status, setStatus] = useState("idle") // idle | loading | success | error
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" });
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus("loading")
+
+    try {
+      await sendEmail()
+
+      setStatus("success")
+      setFormData({
+        from_name: "",
+        from_email: "",
+        message: "",
+      })
+    } catch (error) {
+      setStatus("error")
+      console.log(error)
+    }
+  }
+
+  const sendEmail = async () => {
+    await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      formData,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    )
+  }
 
   const MAX_LENGHT = 1000
 
@@ -48,9 +71,9 @@ export function ContactSection() {
               <input
                 type="text"
                 required
-                value={formData.name}
+                value={formData.from_name}
                 onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
+                  setFormData({ ...formData, from_name: e.target.value })
                 }
                 className="w-full bg-secondary border border-border rounded-md px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-[var(--glow-primary)] transition-all"
                 placeholder='"your first and last name"'
@@ -64,9 +87,9 @@ export function ContactSection() {
               <input
                 type="email"
                 required
-                value={formData.email}
+                value={formData.from_email}
                 onChange={(e) => {
-                  setFormData({ ...formData, email: e.target.value })
+                  setFormData({ ...formData, from_email: e.target.value })
                 }}
                 className="w-full bg-secondary border border-border rounded-md px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-[var(--glow-primary)] transition-all"
                 placeholder='"you@email.com"'
@@ -96,15 +119,30 @@ export function ContactSection() {
 
             <button
               type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/30 bg-primary/10 text-primary font-mono text-sm transition-all hover:bg-primary/20 hover:shadow-[var(--glow-primary)]"
+              disabled={status == "loading"}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/30 bg-primary/10 text-primary font-mono text-sm transition-all hover:bg-primary/20 hover:shadow-[var(--glow-primary)] disabled:opacity-50"
             >
-              {submitted ? (
+              {status == "loading" ? (
                 <span className="inline-flex items-center gap-3">
-                  <Check size={16} className="mt-0.5" />
-                  message.sent = true
+                  {/* <Check size={16} className="mt-0.5" /> */}
+                  {/* 200 MESSAGE SENT */}
+                  <Loader2 size={16} className="mt-0.5 animate-spin" />
+                  sending...
                 </span>
               ) : "> send()"}
             </button>
+
+            {status == "success" && (
+              <div className="text-primary">
+                Message sent successfully.
+              </div>
+            )}
+
+            {status == "error" && (
+              <div className="text-rose-400">
+                Error while sending the message. Message not sent.
+              </div>
+            )}
           </form>
 
           {/* Social links */}
@@ -138,10 +176,18 @@ export function ContactSection() {
                 <Instagram size={16} />
                 instagram
               </a>
+              <a
+                href="mailto:marcoangioni2006@gmail.com?subject=New%20Email%20from%20Portfolio&body=Hi%20Marco%2C%20let's%20get%20in%20touch!"
+                target="_blank"
+                className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Mail size={16} />
+                email
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

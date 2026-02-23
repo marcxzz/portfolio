@@ -1,4 +1,4 @@
-import { Copyright, Github, Instagram, Linkedin } from "lucide-react";
+import { Copyright, Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container flex items-center justify-between">
         <p className="font-mono text-xs text-muted-foreground">
           <span className="text-primary/40">{"// "}</span>
-          built with React JS + Next.js
+          Marco Angioni from Cagliari, Italy
         </p>
 
         <div className="flex gap-4 font-mono text-sm">
@@ -33,6 +33,13 @@ export function Footer() {
             className="text-muted-foreground hover:text-primary transition-colors"
           >
             <Instagram size={16} />
+          </a>
+          <a
+            href="mailto:marcoangioni2006@gmail.com?subject=New%20Email%20from%20Portfolio&body=Hi%20Marco%2C%20let's%20get%20in%20touch!"
+            target="_blank"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Mail size={16} />
           </a>
         </div>
 
