@@ -69,6 +69,7 @@ export const PROJECTS = [
       { name: "Search terms", filename: "search_words.png", },
       { name: "Term details", filename: "term_details.png", },
       { name: "Settings", filename: "settings.png", },
+      { name: "Wordiary logo", filename: "logo.png", },
     ],
     features: [
       "Clean, modern & intuitive UI",

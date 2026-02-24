@@ -87,7 +87,7 @@ export default function ProjectDetail() {
                       loop: true
                     }}
                   >
-                    <CarouselContent>
+                    <CarouselContent className="flex items-center">
                       {project.images.map((img) => (
                         <>
                           <CarouselItem key={img.filename} className="basis-2/5 md:basis-3/10 xl:basis-2/7" >
