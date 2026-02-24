@@ -64,11 +64,11 @@ export const PROJECTS = [
     category: "Full Stack",
     github: "https://github.com/marcxzz/wordiary",
     images: [
-      "home.png",
-      "new_term.png",
-      "search_words.png",
-      "term_details.png",
-      "settings.png",
+      { name: "Home", filename: "home.png", },
+      { name: "New term page", filename: "new_term.png", },
+      { name: "Search terms", filename: "search_words.png", },
+      { name: "Term details", filename: "term_details.png", },
+      { name: "Settings", filename: "settings.png", },
     ],
     features: [
       "Clean, modern & intuitive UI",

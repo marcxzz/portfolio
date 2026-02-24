@@ -1,7 +1,6 @@
 # To-Do's
 - change projects list
 - add more infos in contact section (location, email, phone)
-- edit project details page
 - improve responsivity
 - make 404/not found page with terminal-like texts (e.g. "> ERROR 404: page not found |")
 - customize scrollbar

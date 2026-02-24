@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
-/* @import "tw-animate-css"; */
-/* @import "shadcn/tailwind.css"; */
+
+/* shadcn */
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -106,12 +108,18 @@
 
   * {
     @apply border-border;
+    @apply border-border outline-ring/50;
   }
 
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     @apply font-sans antialiased;
+    @apply bg-background text-foreground;
+  }
+
+  button {
+    @apply cursor-pointer;
   }
 }
 

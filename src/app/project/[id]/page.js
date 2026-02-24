@@ -4,6 +4,10 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { PROJECTS } from "@/data/projects";
 import NotFound from "@/app/not-found";
+import { ArrowLeft, X } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const statusColors = {
   live: "bg-primary/20 text-primary border-primary/30",
@@ -14,6 +18,36 @@ const statusColors = {
 export default function ProjectDetail() {
   const { id } = useParams();
   const project = PROJECTS.find((p) => p.id === id);
+
+  const [api, setApi] = useState(null)
+  const [current, setCurrent] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (!api) return
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
+
+    api.on("select", onSelect)
+    onSelect()
+
+    return () => {
+      api.off("select", onSelect)
+    }
+  }, [api])
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") setIsOpen(false)
+    }
+
+    window.addEventListener("keydown", handleEsc)
+    return () => window.removeEventListener("keydown", handleEsc)
+  }, [])
+
+  const activeImage = project.images[current]
 
   if (!project) {
     return <NotFound pageType='project' />
@@ -33,7 +67,7 @@ export default function ProjectDetail() {
         </Link>
 
         {/* Header */}
-        <div className="mb-16 space-y-4">
+        <div className="mb-12 space-y-4">
           <h1 className="text-5xl font-bold tracking-tight">{project.title}</h1>
           <p className="font-mono text-accent">{project.subtitle}</p>
         </div>
@@ -41,6 +75,78 @@ export default function ProjectDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main content */}
           <div className="lg:col-span-2 space-y-12">
+            {/* Pictures carousel */}
+            {project.images.length > 0 && (
+              <>
+                <div className="px-0">
+                  <Carousel
+                    className="w-full flex justify-center"
+                    setApi={setApi}
+                    opts={{
+                      align: "center",
+                      loop: true
+                    }}
+                  >
+                    <CarouselContent>
+                      {project.images.map((img) => (
+                        <>
+                          <CarouselItem key={img.filename} className="basis-2/5 md:basis-3/10 xl:basis-2/7" >
+                            <div
+                              className="w-full h-fit max-h-[65dvh]"
+                              onClick={() => setIsOpen(true)}
+                            >
+                              <img
+                                src={`/assets/images/${project.id}/${img.filename}`}
+                                alt={`${project.id} ${img.name}`}
+                                // fill
+                                // width={250}
+                                // height={200}
+                                className="h-fit w-full object-contain! rounded-lg transition-transform duration-300 hover:scale-[1.02] cursor-zoom-in"
+                              />
+                            </div>
+                          </CarouselItem>
+                        </>
+                      ))}
+                    </CarouselContent>
+
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                  <div className="mt-4 text-center">
+                    <p className="text-sm text-muted-foreground">
+                      {activeImage?.name}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Lightbox */}
+                {isOpen && (
+                  <div
+                    className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-8 m-0"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div
+                      className="absolute top-8 right-8 cursor-pointer"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <X />
+                    </div>
+                    <div
+                      className="relative w-full h-full max-w-6xl max-h-[85vh]"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Image
+                        src={`/assets/images/${project.id}/${activeImage.filename}`}
+                        alt={activeImage.name}
+                        fill
+                        className="object-contain rounded-xl"
+                      />
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
             {/* Description */}
             <div className="space-y-4">
               <p className="code-comment">about this project</p>
