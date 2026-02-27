@@ -10,3 +10,4 @@
 - improve SEO
 - use ::after for '>', '{', './' texts
 - fix animations with motion
+- optimize images

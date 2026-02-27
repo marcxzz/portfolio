@@ -47,7 +47,16 @@ export default function ProjectDetail() {
     return () => window.removeEventListener("keydown", handleEsc)
   }, [])
 
-  const activeImage = project.images[current]
+  const [activeImage, setActiveImage] = useState(project.images[current])
+
+  useEffect(() => {
+    setActiveImage(project.images[current])
+  }, [current])
+
+  const handleImageClick = (img) => {
+    setActiveImage(img)
+    setIsOpen(true)
+  }
 
   if (!project) {
     return <NotFound pageType='project' />
@@ -93,8 +102,9 @@ export default function ProjectDetail() {
                           <CarouselItem key={img.filename} className="basis-2/5 md:basis-3/10 xl:basis-2/7" >
                             <div
                               className="w-full h-fit max-h-[65dvh]"
-                              onClick={() => setIsOpen(true)}
+                              onClick={() => handleImageClick(img)}
                             >
+                              {/* TODO: all the images must have the same height: desktop images will be wider but equally tall (not scaled down) */}
                               <img
                                 src={`/assets/images/${project.id}/${img.filename}`}
                                 alt={`${project.id} ${img.name}`}

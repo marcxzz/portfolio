@@ -46,7 +46,14 @@ export const PROJECTS = [
     techStack: ["C#", ".NET Blazor Server", "HTML", "CSS", "SQLite", "Figma"],
     category: "Full Stack",
     github: "https://github.com/marcxzz/LiftWise",
-    images: [],
+    images: [
+      { name: "Log in (mobile)", filename: "login_portrait.png", },
+      { name: "Log in (desktop)", filename: "login_landscape.png", },
+      { name: "Sign up (mobile)", filename: "signup_portrait.png", },
+      { name: "Sign up (desktop)", filename: "signup_landscape.png", },
+      { name: "Home (mobile)", filename: "home_portrait.png", },
+      { name: "Home (desktop)", filename: "home_landscape.png", },
+    ],
     features: [
       "Signup & login",
       "Responsive and intuitive UI",
