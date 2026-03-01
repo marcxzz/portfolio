@@ -100,7 +100,7 @@
   ::selection {
     background: #0fa3;
     color: #6fc;
-}
+  }
 
   html {
     scroll-behavior: smooth;
@@ -164,5 +164,28 @@
       linear-gradient(hsl(220 15% 14% / 0.5) 1px, transparent 1px),
       linear-gradient(90deg, hsl(220 15% 14% / 0.5) 1px, transparent 1px);
     background-size: 60px 60px;
+  }
+
+  .swiper-pagination-bullet {
+    @apply w-2 h-2 bg-accent/40! opacity-100 rounded-full! transition-all duration-300;
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply bg-accent! w-5!;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    @apply text-muted-foreground! scale-75 transition-all duration-200;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    @apply text-sm font-bold;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    @apply scale-90 text-accent!;
   }
 }
